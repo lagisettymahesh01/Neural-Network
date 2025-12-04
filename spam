@@ -1,0 +1,29 @@
+import math
+
+# New input
+x = [0, 1, 1]
+
+# Hidden layer weights
+h1 = [0.3, 0.8, -0.2]
+h2 = [-0.6, 0.4, 0.9]
+
+# Output weights
+out = [0.5, -0.3]
+
+relu = lambda z: max(0, z)
+sigmoid = lambda z: 1 / (1 + math.exp(-z))
+
+# Hidden layer outputs
+h1_out = relu(x[0]*h1[0] + x[1]*h1[1] + x[2]*h1[2])
+h2_out = relu(x[0]*h2[0] + x[1]*h2[1] + x[2]*h2[2])
+
+# Output layer
+out_sum = h1_out*out[0] + h2_out*out[1]
+y = sigmoid(out_sum)
+
+print("Output =", y)
+
+if y > 0.6:
+    print("it is a spam")
+else:
+    print("it is not a spam")
